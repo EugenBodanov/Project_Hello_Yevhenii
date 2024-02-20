@@ -5,67 +5,90 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column; /* Aligns items vertically */
-            height: 100vh;
             margin: 0;
+            overflow: hidden;
         }
-        h1 {
-            color: #333;
-            margin-bottom: 20px; /* Adds space between the heading and the image */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #969090;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+            z-index: -1;
         }
-        a {
-            /* Optional: Style your link to remove default underline */
-            text-decoration: none;
-        }
-        img {
-            width: 100px; /* Example size, adjust as needed */
-            height: auto;
-            cursor: pointer; /* Changes cursor to indicate the image is clickable */
-            margin-bottom: 20px; /* Adds space below the image */
+        .content {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Hello, Yevhenii</h1>
-    <a href="https://github.com/EugenBodanov/Project_Hello_Yevhenii/tree/master" target="_blank">
-        <img src="static/github_logo.png" alt="Project Image">
-    </a>
+    <div id="particles-js"></div>
+    <div class="content">
+        <h1>Hello, Yevhenii</h1>
+        <a href="https://github.com/EugenBodanov/Project_Hello_Yevhenii/tree/master" target="_blank">
+            <img src="/static/github_logo.png" alt="Project Image">
+        </a>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@canvas-confetti@1.4.0/dist/canvas-confetti.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        function fireConfetti() {
-            var end = Date.now() + (15 * 1000);
-
-            // go Buckeyes!
-            var colors = ['#bb0000', '#ffffff'];
-
-            (function frame() {
-                confetti({
-                    particleCount: 2,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: colors
-                });
-                confetti({
-                    particleCount: 2,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: colors
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 50
+                },
+                color: {
+                    value: ['#ffffff', '#FF0000']
+                },
+                shape: {
+                    type: ['circle', 'edge']
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 5,
+                    random: true
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    speed: 5,
+                    out_mode: 'out'
                 }
-            }());
-        }
-
-        fireConfetti();
+            },
+            interactivity: {
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    }
+                },
+                modes: {
+                    repulse: {
+                        distance: 50,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
     </script>
 </body>
 </html>
